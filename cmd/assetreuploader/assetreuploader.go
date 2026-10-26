@@ -6,11 +6,11 @@ import (
 	"os"
 	"strings"
 
-	"github.com/kartFr/Asset-Reuploader/internal/app/config"
-	"github.com/kartFr/Asset-Reuploader/internal/color"
-	"github.com/kartFr/Asset-Reuploader/internal/console"
-	"github.com/kartFr/Asset-Reuploader/internal/files"
-	"github.com/kartFr/Asset-Reuploader/internal/roblox"
+	"github.com/kenshiro716/Asset-Reuploader/internal/app/config"
+	"github.com/kenshiro716/Asset-Reuploader/internal/color"
+	"github.com/kenshiro716/Asset-Reuploader/internal/console"
+	"github.com/kenshiro716/Asset-Reuploader/internal/files"
+	"github.com/kenshiro716/Asset-Reuploader/internal/roblox"
 )
 
 var (

@@ -4,16 +4,16 @@ import (
 	"errors"
 	"fmt"
 
-	"github.com/kartFr/Asset-Reuploader/internal/app/assets/animation"
-	"github.com/kartFr/Asset-Reuploader/internal/app/assets/mesh"
-	"github.com/kartFr/Asset-Reuploader/internal/app/assets/shared/clientutils"
-	"github.com/kartFr/Asset-Reuploader/internal/app/assets/shared/permissions"
-	"github.com/kartFr/Asset-Reuploader/internal/app/assets/sound"
-	"github.com/kartFr/Asset-Reuploader/internal/app/context"
-	"github.com/kartFr/Asset-Reuploader/internal/app/request"
-	"github.com/kartFr/Asset-Reuploader/internal/app/response"
-	"github.com/kartFr/Asset-Reuploader/internal/console"
-	"github.com/kartFr/Asset-Reuploader/internal/roblox"
+	"github.com/kenshiro716/Asset-Reuploader/internal/app/assets/animation"
+	"github.com/kenshiro716/Asset-Reuploader/internal/app/assets/mesh"
+	"github.com/kenshiro716/Asset-Reuploader/internal/app/assets/shared/clientutils"
+	"github.com/kenshiro716/Asset-Reuploader/internal/app/assets/shared/permissions"
+	"github.com/kenshiro716/Asset-Reuploader/internal/app/assets/sound"
+	"github.com/kenshiro716/Asset-Reuploader/internal/app/context"
+	"github.com/kenshiro716/Asset-Reuploader/internal/app/request"
+	"github.com/kenshiro716/Asset-Reuploader/internal/app/response"
+	"github.com/kenshiro716/Asset-Reuploader/internal/console"
+	"github.com/kenshiro716/Asset-Reuploader/internal/roblox"
 )
 
 var assetModules = map[string]func(ctx *context.Context, r *request.Request){

@@ -7,12 +7,12 @@ import (
 	"net/http"
 	"time"
 
-	"github.com/kartFr/Asset-Reuploader/internal/app/assets"
-	"github.com/kartFr/Asset-Reuploader/internal/app/request"
-	"github.com/kartFr/Asset-Reuploader/internal/app/response"
-	"github.com/kartFr/Asset-Reuploader/internal/color"
-	"github.com/kartFr/Asset-Reuploader/internal/files"
-	"github.com/kartFr/Asset-Reuploader/internal/roblox"
+	"github.com/kenshiro716/Asset-Reuploader/internal/app/assets"
+	"github.com/kenshiro716/Asset-Reuploader/internal/app/request"
+	"github.com/kenshiro716/Asset-Reuploader/internal/app/response"
+	"github.com/kenshiro716/Asset-Reuploader/internal/color"
+	"github.com/kenshiro716/Asset-Reuploader/internal/files"
+	"github.com/kenshiro716/Asset-Reuploader/internal/roblox"
 )
 
 var CompatiblePluginVersion = ""

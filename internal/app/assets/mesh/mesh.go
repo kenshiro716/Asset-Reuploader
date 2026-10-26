@@ -9,17 +9,17 @@ import (
 	"sync/atomic"
 	"time"
 
-	"github.com/kartFr/Asset-Reuploader/internal/app/assets/shared/assetutils"
-	"github.com/kartFr/Asset-Reuploader/internal/app/assets/shared/clientutils"
-	"github.com/kartFr/Asset-Reuploader/internal/app/assets/shared/uploaderror"
-	"github.com/kartFr/Asset-Reuploader/internal/app/context"
-	"github.com/kartFr/Asset-Reuploader/internal/app/request"
-	"github.com/kartFr/Asset-Reuploader/internal/app/response"
-	"github.com/kartFr/Asset-Reuploader/internal/retry"
-	"github.com/kartFr/Asset-Reuploader/internal/roblox/assetdelivery"
-	"github.com/kartFr/Asset-Reuploader/internal/roblox/develop"
-	"github.com/kartFr/Asset-Reuploader/internal/roblox/ide"
-	"github.com/kartFr/Asset-Reuploader/internal/taskqueue"
+	"github.com/kenshiro716/Asset-Reuploader/internal/app/assets/shared/assetutils"
+	"github.com/kenshiro716/Asset-Reuploader/internal/app/assets/shared/clientutils"
+	"github.com/kenshiro716/Asset-Reuploader/internal/app/assets/shared/uploaderror"
+	"github.com/kenshiro716/Asset-Reuploader/internal/app/context"
+	"github.com/kenshiro716/Asset-Reuploader/internal/app/request"
+	"github.com/kenshiro716/Asset-Reuploader/internal/app/response"
+	"github.com/kenshiro716/Asset-Reuploader/internal/retry"
+	"github.com/kenshiro716/Asset-Reuploader/internal/roblox/assetdelivery"
+	"github.com/kenshiro716/Asset-Reuploader/internal/roblox/develop"
+	"github.com/kenshiro716/Asset-Reuploader/internal/roblox/ide"
+	"github.com/kenshiro716/Asset-Reuploader/internal/taskqueue"
 )
 
 const assetTypeID int32 = 4

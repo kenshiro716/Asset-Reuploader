@@ -1,4 +1,4 @@
-module github.com/kartFr/Asset-Reuploader
+module github.com/kenshiro716/Asset-Reuploader
 
 go 1.23.3
 

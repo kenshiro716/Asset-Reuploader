@@ -4,7 +4,7 @@ import (
 	"bytes"
 	"errors"
 
-	"github.com/kartFr/Asset-Reuploader/internal/roblox"
+	"github.com/kenshiro716/Asset-Reuploader/internal/roblox"
 )
 
 var UploadMeshErrors = struct {
