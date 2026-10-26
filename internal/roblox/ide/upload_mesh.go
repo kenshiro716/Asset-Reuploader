@@ -56,6 +56,7 @@ func NewUploadMeshHandler(
 
 		if isInappropriateError(err.Error()) {
 			currentName = "[Censored]"
+			description = ""
 			return 0, UploadMeshErrors.ErrInappropriateName
 		}
 

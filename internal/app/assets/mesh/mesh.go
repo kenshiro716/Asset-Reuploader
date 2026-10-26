@@ -67,7 +67,7 @@ func Reupload(ctx *context.Context, r *request.Request) {
 			return
 		}
 
-		uploadHandler, err := ide.NewUploadMeshHandler(client, assetInfo.Name, "", assetData, groupID)
+		uploadHandler, err := ide.NewUploadMeshHandler(client, assetInfo.Name, ide.AssetDescription, assetData, groupID)
 		if err != nil {
 			newUploadError("Failed to get upload handler", assetInfo, err)
 			return

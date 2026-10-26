@@ -56,6 +56,7 @@ func NewUploadAnimationHandler(
 
 		if isInappropriateError(err.Error()) {
 			currentName = "[Censored]"
+			description = ""
 			return 0, UploadAnimationErrors.ErrInappropriateName
 		}
 
