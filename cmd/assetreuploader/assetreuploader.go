@@ -20,6 +20,8 @@ var (
 
 func main() {
 	console.ClearScreen()
+	console.PlayIntro()
+	console.ClearScreen()
 
 	fmt.Println("Authenticating cookie...")
 
