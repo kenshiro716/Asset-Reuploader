@@ -5,6 +5,16 @@ import (
 	"github.com/kenshiro716/Asset-Reuploader/internal/roblox/games"
 )
 
+// ProductInfo describes a developer product read by the plugin with
+// MarketplaceService:GetProductInfo, since its details are not public via the web API.
+type ProductInfo struct {
+	ID               int64  `json:"id"`
+	Name             string `json:"name"`
+	Description      string `json:"description"`
+	Price            int64  `json:"price"`
+	IconImageAssetID int64  `json:"iconImageAssetId"`
+}
+
 type RawRequest struct {
 	PlaceID         int64   `json:"placeId"`
 	CreatorID       int64   `json:"creatorId"`
@@ -14,6 +24,8 @@ type RawRequest struct {
 	AssetType       string  `json:"assetType"`
 	ExportJSON      bool    `json:"exportJSON"`
 	IsGroup         bool    `json:"isGroup"`
+
+	Products []ProductInfo `json:"products"`
 }
 
 type Request struct {
@@ -23,6 +35,7 @@ type Request struct {
 	IDs             []int64
 	DefaultPlaceIDs []int64
 	IsGroup         bool
+	Products        []ProductInfo
 }
 
 func FromRawRequest(c *roblox.Client, req *RawRequest) (*Request, error) {
@@ -40,5 +53,6 @@ func FromRawRequest(c *roblox.Client, req *RawRequest) (*Request, error) {
 		IDs:             req.IDs,
 		DefaultPlaceIDs: req.DefaultPlaceIDs,
 		IsGroup:         req.IsGroup,
+		Products:        req.Products,
 	}, nil
 }

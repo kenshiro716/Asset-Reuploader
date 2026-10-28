@@ -5,6 +5,7 @@ import (
 	"fmt"
 
 	"github.com/kenshiro716/Asset-Reuploader/internal/app/assets/animation"
+	"github.com/kenshiro716/Asset-Reuploader/internal/app/assets/developerproduct"
 	"github.com/kenshiro716/Asset-Reuploader/internal/app/assets/mesh"
 	"github.com/kenshiro716/Asset-Reuploader/internal/app/assets/shared/clientutils"
 	"github.com/kenshiro716/Asset-Reuploader/internal/app/assets/shared/permissions"
@@ -20,6 +21,8 @@ var assetModules = map[string]func(ctx *context.Context, r *request.Request){
 	"Animation": animation.Reupload,
 	"Mesh":      mesh.Reupload,
 	"Sound":     sound.Reupload,
+
+	"DeveloperProduct": developerproduct.Reupload,
 }
 
 func NewReuploadHandlerWithType(assetType string, c *roblox.Client, r *request.RawRequest, resp *response.Response) (func() error, error) {

@@ -1,5 +1,6 @@
 --!strict
 local AssetIdFilter = require("./AssetIdFilter")
+local findDeveloperProducts = require("./FindDeveloperProducts")
 local Connection = require("./Connection")
 local retry = require("./Retry")
 local StatusCodes = require("./StatusCodes")
@@ -47,7 +48,8 @@ type Request = {
 	pluginVersion: string,   
 	assetType: string,       
 	exportJson: boolean,     
-	isGroup: boolean     
+	isGroup: boolean,
+	products: { findDeveloperProducts.ProductInfo }?
 }
 
 local function scriptInjectionEnabled()
@@ -82,7 +84,7 @@ function getGameInfo(): (boolean, number, number)
     return isGroup, creatorInfo.CreatorTargetId, placeId
 end
 
-return function(plugin: Plugin, ui: UiLibrary.Ui, filterOptions: AssetIdFilter.FilterOptions, assetType: "Animation" | "Sound" | "Mesh", placeArray: { number }?)
+return function(plugin: Plugin, ui: UiLibrary.Ui, filterOptions: AssetIdFilter.FilterOptions, assetType: "Animation" | "Sound" | "Mesh" | "DeveloperProduct", placeArray: { number }?)
     if busy then
         ui:Notify("Notification", "Plugin is busy.")
         return 
@@ -111,6 +113,32 @@ return function(plugin: Plugin, ui: UiLibrary.Ui, filterOptions: AssetIdFilter.F
         ui:Notify("Notification", "No ids found.")
         busy = false
         return
+    end
+
+    local products: { findDeveloperProducts.ProductInfo }?
+    if assetType == "DeveloperProduct" then
+        local candidates = AssetIdFilter.getIdArray(filteredIds)
+        ui:Notify("Notification", `Checking {#candidates} ids for developer products...`)
+        local found = findDeveloperProducts(candidates, function(checked, total)
+            ui:Notify("Notification", `Checked {checked}/{total} ids for developer products...`)
+        end)
+
+        local productList = {}
+        for id in filteredIds do
+            local info = found[id]
+            if info then
+                table.insert(productList, info)
+            else
+                filteredIds[id] = nil
+            end
+        end
+
+        if #productList == 0 then
+            ui:Notify("Notification", "No developer products found.")
+            busy = false
+            return
+        end
+        products = productList
     end
 
     local connection, response = Connection.new(plugin:GetSetting("Port"))
@@ -151,7 +179,8 @@ return function(plugin: Plugin, ui: UiLibrary.Ui, filterOptions: AssetIdFilter.F
         ids = idArray,
         placeId = placeId,
         defaultPlaceIds = placeArray or {},
-        exportJson = plugin:GetSetting("ExportJSON")
+        exportJson = plugin:GetSetting("ExportJSON"),
+        products = products,
     }
     
     local success, statusCode = connection:Send("/reupload", HttpService:JSONEncode(request))
